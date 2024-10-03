@@ -33,13 +33,32 @@ To install ROS 2 and Gazebo, follow the official setup guides:
 - [Gazebo installation guide](https://gazebosim.org/docs)
 
 ## Installation
-TBD
+This assumes you have installed Gazebo (Ignition) and ROS2 before.
+First, CD to the ros2 workspace, and run the following commands:
+
+```
+colcon build
+source install/setup.bash
+```
+Now, you should be ready to go!
+
+## IMPORTANT:
+This project runs on the Ignition version of gazebo, using Citadel (gz), Foxy (ROS2), and Focal (Ubuntu). Please change the code according to your own options.
 
 ## Running the Simulation
-TBD
+First, setup the bridge between ROS2 and Gazebo:
+```
+ros2 run ros_ign_bridge parameter_bridge /cmd_vel@geometry_msgs/msg/Twist@ignition.msgs.Twist
+```
+This sets up a bridge on cmd_vel for communicating ros with the simulation.
+
+Then, just run your gazebo simulation with:
+```
+ign gazebo building_robot.sdf -v4
+```
 
 ## Usage
-TBD
+It's as simple as using the right trigger, and right joystick of the controller to drive.
 
 
 ## License
